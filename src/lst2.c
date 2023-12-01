@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p_functions.c                                      :+:      :+:    :+:   */
+/*   lst2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 19:37:17 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/01 20:05:15 by jgotz            ###   ########.fr       */
+/*   Created: 2023/12/01 20:02:19 by jgotz             #+#    #+#             */
+/*   Updated: 2023/12/01 20:03:31 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/// @brief Take the first element at the top of b and put it at the top of a.
-/// Do nothing if b is empty.
-void	pa(t_list **a, t_list **b)
+t_list	*ft_lst_at(t_list *lst, int index)
 {
-	t_list	*tmp;
+	int	i;
 
-	if (*b)
+	i = 0;
+	while (lst && i < index)
 	{
-		tmp = *b;
-		*b = (*b)->next;
-		tmp->next = *a;
-		*a = tmp;
+		lst = lst->next;
+		i++;
 	}
-	printf("pa\n");
-}
-
-/// @brief Take the first element at the top of a and put it at the top of b.
-/// Do nothing if a is empty.
-void	pb(t_list **a, t_list **b)
-{
-	pa(b, a);
-	printf("pb\n");
+	return (lst);
 }

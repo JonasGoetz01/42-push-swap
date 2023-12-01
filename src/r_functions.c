@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:38:40 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/01 19:40:08 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/01 20:05:32 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ra(t_list **a)
 		last->next = tmp;
 		tmp->next = NULL;
 	}
+	printf("ra\n");
 }
 
 /// @brief Shift up all elements of stack b by 1.
@@ -34,6 +35,7 @@ void	ra(t_list **a)
 void	rb(t_list **b)
 {
 	ra(b);
+	printf("rb\n");
 }
 
 /// @brief ra and rb at the same time.
@@ -41,4 +43,5 @@ void	rr(t_list **a, t_list **b)
 {
 	ra(a);
 	rb(b);
+	printf("rr\n");
 }

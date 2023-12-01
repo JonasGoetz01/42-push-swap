@@ -1,8 +1,8 @@
 NAME	:= push_swap
 
-CFLAGS	:= -Wextra -Wall -Werror
+CFLAGS	:= -Wextra -Wall -Werror -g
 
-CC		:= cc
+CC		:= gcc
 
 HEADERS	:= -I ./includes/*.h
 
@@ -12,10 +12,12 @@ SRCDIR := ./src/
 
 SRCS	:=  $(SRCDIR)main.c \
 			$(SRCDIR)lst.c \
+			$(SRCDIR)lst2.c \
 			$(SRCDIR)p_functions.c \
 			$(SRCDIR)r_functions.c \
 			$(SRCDIR)rr_functions.c \
-			$(SRCDIR)s_functions.c
+			$(SRCDIR)s_functions.c \
+			$(SRCDIR)quick_sort.c
 
 OBJS	:= ${SRCS:.c=.o}
 

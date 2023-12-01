@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug with LLDB",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/push_swap",
+      "args": [
+        "1",
+        "2",
+        "3",
+        "6 5 4",
+        "7 8"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "make"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/jgotz/workspace/07_push-swap/src",
+      "program": "/Users/jgotz/workspace/07_push-swap/src/build/Debug/outDebug"
+    }
+  ]
+}

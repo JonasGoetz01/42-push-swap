@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 19:36:34 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/01 19:40:04 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/01 20:12:54 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void	sa(t_list **a)
 
 	if (ft_lst_size(*a) >= 2)
 	{
-		tmp = a[0]->value;
-		a[0]->value = a[1]->value;
-		a[1]->value = tmp;
+		tmp = (*a)->value;
+		(*a)->value = (*a)->next->value;
+		(*a)->next->value = tmp;
 	}
+	printf("sa\n");
 }
 
 /// @brief Swap the first 2 elements at the top of stack b.
@@ -31,6 +32,7 @@ void	sa(t_list **a)
 void	sb(t_list **b)
 {
 	sa(b);
+	printf("sb\n");
 }
 
 /// @brief sa and sb at the same time.
@@ -38,4 +40,5 @@ void	ss(t_list **a, t_list **b)
 {
 	sa(a);
 	sb(b);
+	printf("ss\n");
 }

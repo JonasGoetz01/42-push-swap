@@ -6,12 +6,11 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:16:51 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/01 19:41:51 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/01 20:24:50 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 void	fill_stack(t_list **a, char **argv, int argc)
 {
@@ -63,5 +62,6 @@ int	main(int argc, char **argv)
 	*a = NULL;
 	*b = NULL;
 	fill_stack(a, argv, argc);
+	quick_sort(a);
 	return (0);
 }

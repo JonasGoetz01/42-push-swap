@@ -2,4 +2,6 @@
 */**/*.a
 */**/*.out
 push_swap
-.vscode
+.vscode/*
+!.vscode/launch.json
+visualizer
