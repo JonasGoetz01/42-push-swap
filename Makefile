@@ -1,16 +1,17 @@
-NAME	:= pushswap
+NAME	:= push_swap
 
 CFLAGS	:= -Wextra -Wall -Werror
 
 CC		:= cc
 
-HEADERS	:= -I ./includes
+HEADERS	:= -I ./includes/*.h
 
 LIB := ./libft/libft.a
 
 SRCDIR := ./src/
 
-SRCS	:=  $(SRCDIR)main.c
+SRCS	:=  $(SRCDIR)main.c \
+			$(SRCDIR)lst.c
 
 OBJS	:= ${SRCS:.c=.o}
 
@@ -18,7 +19,7 @@ lib:
 	make -C ./libft
 
 $(NAME): $(OBJS) lib
-	@$(CC) $(OBJS) $(LIB) $(HEADERS) -o $(NAME)
+	$(CC) $(OBJS) $(LIB) $(HEADERS) -o $(NAME)
 
 all: $(NAME)
 

@@ -1,5 +1,5 @@
 */**/*.o
 */**/*.a
 */**/*.out
-pushswap
+push_swap
 .vscode
