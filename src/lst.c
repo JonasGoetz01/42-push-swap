@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 17:01:37 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/01 17:10:50 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/01 18:21:25 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ void	ft_lst_add_back(t_list **lst, t_list *new)
 		}
 		else
 			*lst = new;
+	}
+}
+
+void	ft_lst_add_front(t_list **lst, t_list *new)
+{
+	if (lst)
+	{
+		if (*lst)
+			new->next = *lst;
+		*lst = new;
 	}
 }
 

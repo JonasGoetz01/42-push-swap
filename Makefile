@@ -11,7 +11,11 @@ LIB := ./libft/libft.a
 SRCDIR := ./src/
 
 SRCS	:=  $(SRCDIR)main.c \
-			$(SRCDIR)lst.c
+			$(SRCDIR)lst.c \
+			$(SRCDIR)p_functions.c \
+			$(SRCDIR)r_functions.c \
+			$(SRCDIR)rr_functions.c \
+			$(SRCDIR)s_functions.c
 
 OBJS	:= ${SRCS:.c=.o}
 

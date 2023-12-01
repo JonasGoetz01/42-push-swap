@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:18:57 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/01 17:02:27 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/01 19:44:22 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,21 @@ typedef struct s_list
 }					t_list;
 
 void				ft_lst_add_back(t_list **lst, t_list *new);
+void				ft_lst_add_front(t_list **lst, t_list *new);
 t_list				*ft_lst_last(t_list *lst);
 t_list				*ft_lst_new(int value);
 int					ft_lst_size(t_list *lst);
+
+void				pa(t_list **a, t_list **b);
+void				pb(t_list **a, t_list **b);
+void				ra(t_list **a);
+void				rb(t_list **b);
+void				rr(t_list **a, t_list **b);
+void				rra(t_list **a);
+void				rrb(t_list **b);
+void				rrr(t_list **a, t_list **b);
+void				sa(t_list **a);
+void				sb(t_list **b);
+void				ss(t_list **a, t_list **b);
 
 #endif
