@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:04:07 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:55:41 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 14:59:27 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void					prep_for_push(t_stack_node **s, t_stack_node *n,
 							char c);
 
 t_stack_node			*find_last(t_stack_node *stack);
-int					stack_sorted(t_stack_node *stack);
+int						stack_sorted(t_stack_node *stack);
 t_stack_node			*find_min(t_stack_node *stack);
 t_stack_node			*find_max(t_stack_node *stack);
 
