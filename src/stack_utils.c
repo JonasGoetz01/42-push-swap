@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:41:59 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:47:06 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 14:57:34 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ t_stack_node	*find_last(t_stack_node *stack)
 	return (stack);
 }
 
-bool	stack_sorted(t_stack_node *stack)
+int	stack_sorted(t_stack_node *stack)
 {
 	if (!stack)
 		return (1);
 	while (stack->next)
 	{
 		if (stack->nbr > stack->next->nbr)
-			return (false);
+			return (0);
 		stack = stack->next;
 	}
-	return (true);
+	return (1);
 }
 
 t_stack_node	*find_min(t_stack_node *stack)

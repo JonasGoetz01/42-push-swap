@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:37:57 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:05:56 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 14:56:58 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	sort_three(t_stack_node **a)
 
 	biggest_node = find_max(*a);
 	if (biggest_node == *a)
-		ra(a, false);
+		ra(a, 0);
 	else if ((*a)->next == biggest_node)
-		rra(a, false);
+		rra(a, 0);
 	if ((*a)->nbr > (*a)->next->nbr)
-		sa(a, false);
+		sa(a, 0);
 }

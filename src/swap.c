@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:38:18 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:06:13 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 14:55:28 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ static void	swap(t_stack_node **head)
 	(*head)->prev = NULL;
 }
 
-void	sa(t_stack_node **a, bool print)
+void	sa(t_stack_node **a, int print)
 {
 	swap(a);
 	if (!print)
 		ft_printf("sa\n");
 }
 
-void	sb(t_stack_node **b, bool print)
+void	sb(t_stack_node **b, int print)
 {
 	swap(b);
 	if (!print)
 		ft_printf("sb\n");
 }
 
-void	ss(t_stack_node **a, t_stack_node **b, bool print)
+void	ss(t_stack_node **a, t_stack_node **b, int print)
 {
 	swap(a);
 	swap(b);

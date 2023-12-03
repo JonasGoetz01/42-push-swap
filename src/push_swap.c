@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:40:29 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:45:49 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 14:56:38 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	if (!stack_sorted(a))
 	{
 		if (ft_lst_size(a) == 2)
-			sa(&a, false);
+			sa(&a, 0);
 		else if (ft_lst_size(a) == 3)
 			sort_three(&a);
 		else

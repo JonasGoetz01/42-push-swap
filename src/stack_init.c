@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:41:22 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:06:05 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 14:57:05 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,16 @@ void	prep_for_push(t_stack_node **stack, t_stack_node *top_node,
 		if (stack_name == 'a')
 		{
 			if (top_node->above_median)
-				ra(stack, false);
+				ra(stack, 0);
 			else
-				rra(stack, false);
+				rra(stack, 0);
 		}
 		else if (stack_name == 'b')
 		{
 			if (top_node->above_median)
-				rb(stack, false);
+				rb(stack, 0);
 			else
-				rrb(stack, false);
+				rrb(stack, 0);
 		}
 	}
 }

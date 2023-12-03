@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:37:30 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:05:44 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 14:55:21 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,21 @@ static void	rotate(t_stack_node **stack)
 	last_node->next->next = NULL;
 }
 
-void	ra(t_stack_node **a, bool print)
+void	ra(t_stack_node **a, int print)
 {
 	rotate(a);
 	if (!print)
 		ft_printf("ra\n");
 }
 
-void	rb(t_stack_node **b, bool print)
+void	rb(t_stack_node **b, int print)
 {
 	rotate(b);
 	if (!print)
 		ft_printf("rb\n");
 }
 
-void	rr(t_stack_node **a, t_stack_node **b, bool print)
+void	rr(t_stack_node **a, t_stack_node **b, int print)
 {
 	rotate(a);
 	rotate(b);

@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:39:33 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:45:52 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 14:56:34 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	current_index(t_stack_node *stack)
 	{
 		stack->index = i;
 		if (i <= median)
-			stack->above_median = true;
+			stack->above_median = 1;
 		else
-			stack->above_median = false;
+			stack->above_median = 0;
 		stack = stack->next;
 		++i;
 	}
@@ -97,7 +97,7 @@ void	set_cheapest(t_stack_node *stack)
 		}
 		stack = stack->next;
 	}
-	cheapest_node->cheapest = true;
+	cheapest_node->cheapest = 1;
 }
 
 void	init_nodes_a(t_stack_node *a, t_stack_node *b)

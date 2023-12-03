@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:36:39 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:05:36 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 14:55:08 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 	}
 }
 
-void	pa(t_stack_node **a, t_stack_node **b, bool print)
+void	pa(t_stack_node **a, t_stack_node **b, int print)
 {
 	push(a, b);
 	if (!print)
 		ft_printf("pa\n");
 }
 
-void	pb(t_stack_node **b, t_stack_node **a, bool print)
+void	pb(t_stack_node **b, t_stack_node **a, int print)
 {
 	push(b, a);
 	if (!print)

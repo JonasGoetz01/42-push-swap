@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:45:53 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:05:49 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 14:56:47 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	rotate_both(t_stack_node **a, t_stack_node **b,
 		t_stack_node *cheapest_node)
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
-		rr(a, b, false);
+		rr(a, b, 0);
 	current_index(*a);
 	current_index(*b);
 }
@@ -25,7 +25,7 @@ static void	rev_rotate_both(t_stack_node **a, t_stack_node **b,
 		t_stack_node *cheapest_node)
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
-		rrr(a, b, false);
+		rrr(a, b, 0);
 	current_index(*a);
 	current_index(*b);
 }
@@ -42,13 +42,13 @@ void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 		rev_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(b, cheapest_node->target_node, 'b');
-	pb(b, a, false);
+	pb(b, a, 0);
 }
 
 void	move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
-	pa(a, b, false);
+	pa(a, b, 0);
 }
 
 void	min_on_top(t_stack_node **a)
@@ -56,8 +56,8 @@ void	min_on_top(t_stack_node **a)
 	while ((*a)->nbr != find_min(*a)->nbr)
 	{
 		if (find_min(*a)->above_median)
-			ra(a, false);
+			ra(a, 0);
 		else
-			rra(a, false);
+			rra(a, 0);
 	}
 }
