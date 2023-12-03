@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:36:39 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:59:55 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 17:49:21 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,14 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 	if (!*src)
 		return ;
 	push_node = *src;
-	*src = (*src)->next;
+	*src = push_node->next;
 	if (*src)
 		(*src)->prev = NULL;
 	push_node->prev = NULL;
-	if (!*dst)
-	{
-		*dst = push_node;
-		push_node->next = NULL;
-	}
-	else
-	{
-		push_node->next = *dst;
-		push_node->next->prev = push_node;
-		*dst = push_node;
-	}
+	push_node->next = *dst;
+	if (*dst)
+		(*dst)->prev = push_node;
+	*dst = push_node;
 }
 
 void	pa(t_stack_node **a, t_stack_node **b, int print)

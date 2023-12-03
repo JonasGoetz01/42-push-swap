@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:38:44 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:59:31 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/03 17:42:32 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 int	error_syntax(char *str_n)
 {
-	if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
+	if (!(*str_n == '+' || *str_n == '-' || ft_isdigit(*str_n)))
 		return (1);
-	if ((*str_n == '+' || *str_n == '-') && !(str_n[1] >= '0'
-			&& str_n[1] <= '9'))
+	if ((*str_n == '+' || *str_n == '-') && !ft_isdigit(*(str_n + 1)))
 		return (1);
 	while (*++str_n)
 	{
-		if (!(*str_n >= '0' && *str_n <= '9'))
+		if (!ft_isdigit(*str_n))
 			return (1);
 	}
 	return (0);
@@ -29,15 +28,9 @@ int	error_syntax(char *str_n)
 
 int	error_duplicate(t_stack_node *a, int n)
 {
-	if (!a)
-		return (0);
-	while (a)
-	{
-		if (a->nbr == n)
-			return (1);
+	while (a && a->nbr != n)
 		a = a->next;
-	}
-	return (0);
+	return (a != NULL);
 }
 
 void	free_stack(t_stack_node **stack)
@@ -62,5 +55,5 @@ void	free_errors(t_stack_node **a)
 {
 	free_stack(a);
 	ft_printf("Error\n");
-	exit(1);
+	exit(0);
 }
