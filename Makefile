@@ -1,42 +1,55 @@
-NAME	:= push_swap
+NAME = push_swap
 
-CFLAGS	:= -Wextra -Wall -Werror -g
+LIB = ./lib/libftprintf.a
+INC = inc/
+SRC_DIR = src/
+OBJ_DIR = obj/
 
-CC		:= gcc
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -g -I
+RM = rm -f
 
-HEADERS	:= -I ./includes/*.h
+SRCS = $(SRC_DIR)push.c \
+		$(SRC_DIR)rev_rotate.c \
+		$(SRC_DIR)rotate.c \
+		$(SRC_DIR)sort_stacks.c \
+		$(SRC_DIR)sort_stacks2.c \
+		$(SRC_DIR)sort_three.c \
+		$(SRC_DIR)swap.c \
+		$(SRC_DIR)handle_errors.c \
+		$(SRC_DIR)init_a_to_b.c \
+		$(SRC_DIR)init_b_to_a.c \
+		$(SRC_DIR)push_swap.c \
+		$(SRC_DIR)stack_init.c \
+		$(SRC_DIR)lst.c \
+		$(SRC_DIR)lst2.c \
+		$(SRC_DIR)stack_utils.c
 
-LIB := ./libft/libft.a
+OBJS := ${SRCS:.c=.o}
 
-SRCDIR := ./src/
+start:
+	@make all
 
-SRCS	:=  $(SRCDIR)main.c \
-			$(SRCDIR)lst.c \
-			$(SRCDIR)lst2.c \
-			$(SRCDIR)p_functions.c \
-			$(SRCDIR)r_functions.c \
-			$(SRCDIR)rr_functions.c \
-			$(SRCDIR)s_functions.c \
-			$(SRCDIR)quick_sort.c
-
-OBJS	:= ${SRCS:.c=.o}
-
-lib:
-	make -C ./libft
-
-$(NAME): $(OBJS) lib
-	$(CC) $(OBJS) $(LIB) $(HEADERS) -o $(NAME)
+$(LIB):
+	@make -C ./lib
 
 all: $(NAME)
 
+$(NAME): $(OBJS) $(LIB)
+	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIB) -o $(NAME)
+
+%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
 clean:
-	make -C ./libft clean
-	rm -rf $(OBJS)
+	@$(RM) -r $(OBJS)
+	@make clean -C ./lib
 
 fclean: clean
-	make -C ./libft fclean
-	rm -rf $(NAME)
+	@$(RM) $(NAME)
+	@$(RM) $(LIB)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: start all clean fclean re
