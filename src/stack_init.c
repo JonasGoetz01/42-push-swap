@@ -6,12 +6,15 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:41:22 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 15:00:20 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/04 14:20:15 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+/// @brief function to convert a string to a long
+/// @param s string to be converted
+/// @return long value of the string
 static long	ft_atol(const char *s)
 {
 	long	result;
@@ -33,18 +36,21 @@ static long	ft_atol(const char *s)
 	return (result * sign);
 }
 
-static void	append_node(t_stack_node **stack, int n)
+/// @brief function to append a node to the end of a stack
+/// @param stack stack to be appended to
+/// @param n value of the new node
+static void	append_node(t_node **stack, int n)
 {
-	t_stack_node	*node;
-	t_stack_node	*last_node;
+	t_node	*node;
+	t_node	*last_node;
 
 	if (!stack)
 		return ;
-	node = malloc(sizeof(t_stack_node));
+	node = malloc(sizeof(t_node));
 	if (!node)
 		return ;
 	node->next = NULL;
-	node->nbr = n;
+	node->value = n;
 	if (!(*stack))
 	{
 		*stack = node;
@@ -58,7 +64,11 @@ static void	append_node(t_stack_node **stack, int n)
 	}
 }
 
-void	init_stack_a(t_stack_node **a, char **argv)
+/// @brief function to initialize stack a
+/// Security: checks if the string is a valid number
+/// @param a stack to be initialized
+/// @param argv string with the numbers
+void	init_stack_a(t_node **a, char **argv)
 {
 	long	n;
 	int		i;
@@ -78,34 +88,39 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	}
 }
 
-t_stack_node	*get_cheapest(t_stack_node *stack)
+/// @brief function to find the cheapest node in a stack
+/// @param stack stack to be searched
+t_node	*get_is_cheapest(t_node *stack)
 {
 	if (!stack)
 		return (NULL);
 	while (stack)
 	{
-		if (stack->cheapest)
+		if (stack->is_cheapest)
 			return (stack);
 		stack = stack->next;
 	}
 	return (NULL);
 }
 
-void	prep_for_push(t_stack_node **stack, t_stack_node *top_node,
-		char stack_name)
+/// @brief function bring the cheapest node to the top of the stack
+/// @param stack stack to be searched
+/// @param top_node node to be brought to the top
+/// @param stack_name name of the stack ['a'|'b']
+void	prep_for_push(t_node **stack, t_node *top_node, char stack_name)
 {
 	while (*stack != top_node)
 	{
 		if (stack_name == 'a')
 		{
-			if (top_node->above_median)
+			if (top_node->is_above_median)
 				ra(stack, 0);
 			else
 				rra(stack, 0);
 		}
 		else if (stack_name == 'b')
 		{
-			if (top_node->above_median)
+			if (top_node->is_above_median)
 				rb(stack, 0);
 			else
 				rrb(stack, 0);

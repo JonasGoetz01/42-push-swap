@@ -9,17 +9,18 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g -I
 RM = rm -f
 
-SRCS = $(SRC_DIR)push.c \
-		$(SRC_DIR)rev_rotate.c \
-		$(SRC_DIR)rotate.c \
-		$(SRC_DIR)sort_stacks.c \
-		$(SRC_DIR)sort_stacks2.c \
+SRCS = $(SRC_DIR)p_functions.c \
+		$(SRC_DIR)rr_functions.c \
+		$(SRC_DIR)r_functions.c \
+		$(SRC_DIR)s_functions.c \
+		$(SRC_DIR)turk_sort.c \
+		$(SRC_DIR)turk_sort2.c \
 		$(SRC_DIR)sort_three.c \
-		$(SRC_DIR)swap.c \
-		$(SRC_DIR)handle_errors.c \
-		$(SRC_DIR)init_a_to_b.c \
-		$(SRC_DIR)init_b_to_a.c \
-		$(SRC_DIR)push_swap.c \
+		$(SRC_DIR)errors.c \
+		$(SRC_DIR)stacka.c \
+		$(SRC_DIR)stackb.c \
+		$(SRC_DIR)stack_general.c \
+		$(SRC_DIR)main.c \
 		$(SRC_DIR)stack_init.c \
 		$(SRC_DIR)lst.c \
 		$(SRC_DIR)lst2.c \

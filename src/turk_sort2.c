@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stacks2.c                                     :+:      :+:    :+:   */
+/*   turk_sort2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:46:25 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 15:00:13 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/04 14:40:21 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	sort_stacks(t_stack_node **a, t_stack_node **b)
+/// @brief The sorting algorithm.
+///
+/// The algorithm works as follows:
+/// 1. If the stack is smaller than 4, sort it with sort_three.
+/// 2. If the stack is larger than 3, push the cheapest node to stack b.
+/// 3. If the stack is larger than 3, push the second cheapest node to stack b.
+/// 4. While the stack is larger than 3, push the cheapest node to stack b.
+/// @param a Stack a.
+/// @param b Stack b.
+void	sort_stacks(t_node **a, t_node **b)
 {
 	int	len_a;
 

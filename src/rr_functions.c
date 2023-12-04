@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*   rr_functions.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:36:56 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 15:00:00 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/04 14:38:14 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void	rev_rotate(t_stack_node **stack)
+/// @brief Rotates the stack by moving the last node to the top.
+/// @param stack The stack.
+static void	rev_rotate(t_node **stack)
 {
-	t_stack_node	*last;
+	t_node	*last;
 
 	if (!*stack || !(*stack)->next)
 		return ;
@@ -26,21 +28,31 @@ static void	rev_rotate(t_stack_node **stack)
 	last->next->prev = last;
 }
 
-void	rra(t_stack_node **a, int print)
+/// @brief Rotates stack a.
+/// @param a Stack a.
+/// @param print If true, the function will not print.
+void	rra(t_node **a, int print)
 {
 	rev_rotate(a);
 	if (!print)
 		ft_printf("rra\n");
 }
 
-void	rrb(t_stack_node **b, int print)
+/// @brief Rotates stack b.
+/// @param b Stack b.
+/// @param print If true, the function will not print.
+void	rrb(t_node **b, int print)
 {
 	rev_rotate(b);
 	if (!print)
 		ft_printf("rrb\n");
 }
 
-void	rrr(t_stack_node **a, t_stack_node **b, int print)
+/// @brief Rotates both stacks.
+/// @param a Stack a.
+/// @param b Stack b.
+/// @param print If true, the function will not print.
+void	rrr(t_node **a, t_node **b, int print)
 {
 	rev_rotate(a);
 	rev_rotate(b);

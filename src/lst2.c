@@ -6,13 +6,17 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 20:02:19 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:59:44 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/04 14:34:41 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-t_stack_node	*ft_lst_at(t_stack_node *lst, int index)
+/// @brief Get the node at the given index of a list.
+/// @param lst The list.
+/// @param index The index.
+/// @return The node at the given index.
+t_node	*ft_lst_at(t_node *lst, int index)
 {
 	int	i;
 
@@ -25,32 +29,38 @@ t_stack_node	*ft_lst_at(t_stack_node *lst, int index)
 	return (lst);
 }
 
-t_stack_node	*ft_lst_min(t_stack_node *lst)
+/// @brief Get the node with the smallest value of the list.
+/// @param lst The list.
+/// @return The node with the smallest value.
+t_node	*ft_lst_min(t_node *lst)
 {
-	t_stack_node	*min;
-	t_stack_node	*tmp;
+	t_node	*min;
+	t_node	*tmp;
 
 	min = lst;
 	tmp = lst;
 	while (tmp)
 	{
-		if (tmp->nbr < min->nbr)
+		if (tmp->value < min->value)
 			min = tmp;
 		tmp = tmp->next;
 	}
 	return (min);
 }
 
-t_stack_node	*ft_lst_max(t_stack_node *lst)
+/// @brief Get the node with the largest value of the list.
+/// @param lst The list.
+/// @return The node with the largest value.
+t_node	*ft_lst_max(t_node *lst)
 {
-	t_stack_node	*max;
-	t_stack_node	*tmp;
+	t_node	*max;
+	t_node	*tmp;
 
 	max = lst;
 	tmp = lst;
 	while (tmp)
 	{
-		if (tmp->nbr > max->nbr)
+		if (tmp->value > max->value)
 			max = tmp;
 		tmp = tmp->next;
 	}

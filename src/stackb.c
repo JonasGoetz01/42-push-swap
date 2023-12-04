@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_b_to_a.c                                      :+:      :+:    :+:   */
+/*   stackb.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:39:50 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 14:59:37 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/04 14:24:24 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static void	set_target_b(t_stack_node *a, t_stack_node *b)
+/// @brief Sets the target for each node in stack b.
+/// @param a Stack a.
+/// @param b Stack b.
+static void	set_target_b(t_node *a, t_node *b)
 {
-	t_stack_node	*current_a;
-	t_stack_node	*target_node;
-	long			best_match_index;
+	t_node	*current_a;
+	t_node	*target;
+	long	best_match_index;
 
 	while (b)
 	{
@@ -24,22 +27,26 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 		current_a = a;
 		while (current_a)
 		{
-			if (current_a->nbr > b->nbr && current_a->nbr < best_match_index)
+			if (current_a->value > b->value
+				&& current_a->value < best_match_index)
 			{
-				best_match_index = current_a->nbr;
-				target_node = current_a;
+				best_match_index = current_a->value;
+				target = current_a;
 			}
 			current_a = current_a->next;
 		}
 		if (best_match_index == LONG_MAX)
-			b->target_node = find_min(a);
+			b->target = find_min(a);
 		else
-			b->target_node = target_node;
+			b->target = target;
 		b = b->next;
 	}
 }
 
-void	init_nodes_b(t_stack_node *a, t_stack_node *b)
+/// @brief Sorting routine for stack b.
+/// @param a Stack a.
+/// @param b Stack b.
+void	init_nodes_b(t_node *a, t_node *b)
 {
 	current_index(a);
 	current_index(b);

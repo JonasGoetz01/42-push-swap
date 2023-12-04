@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_errors.c                                    :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:38:44 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/03 17:42:32 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/04 14:30:28 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+/// @brief Checks if the input is a valid integer.
+/// @param str_n The input string.
+/// @return 1 if the input is not a valid integer, 0 otherwise.
 int	error_syntax(char *str_n)
 {
 	if (!(*str_n == '+' || *str_n == '-' || ft_isdigit(*str_n)))
@@ -26,17 +29,23 @@ int	error_syntax(char *str_n)
 	return (0);
 }
 
-int	error_duplicate(t_stack_node *a, int n)
+/// @brief Checks if the input is a duplicate.
+/// @param a Stack a.
+/// @param n The input integer.
+/// @return 1 if the input is a duplicate, 0 otherwise.
+int	error_duplicate(t_node *a, int n)
 {
-	while (a && a->nbr != n)
+	while (a && a->value != n)
 		a = a->next;
 	return (a != NULL);
 }
 
-void	free_stack(t_stack_node **stack)
+/// @brief Free the stack.
+/// @param stack The stack.
+void	free_stack(t_node **stack)
 {
-	t_stack_node	*tmp;
-	t_stack_node	*current;
+	t_node	*tmp;
+	t_node	*current;
 
 	if (!stack)
 		return ;
@@ -44,14 +53,16 @@ void	free_stack(t_stack_node **stack)
 	while (current)
 	{
 		tmp = current->next;
-		current->nbr = 0;
+		current->value = 0;
 		free(current);
 		current = tmp;
 	}
 	*stack = NULL;
 }
 
-void	free_errors(t_stack_node **a)
+/// @brief Free the stack and print "Error".
+/// @param a Stack a.
+void	free_errors(t_node **a)
 {
 	free_stack(a);
 	ft_printf("Error\n");
