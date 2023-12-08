@@ -25,8 +25,28 @@ SRCS = $(SRC_DIR)p_functions.c \
 		$(SRC_DIR)lst.c \
 		$(SRC_DIR)lst2.c \
 		$(SRC_DIR)stack_utils.c
+		
 
 OBJS := ${SRCS:.c=.o}
+
+BONUSSRCS = $(SRC_DIR)bonus.c \
+			$(SRC_DIR)p_functions.c \
+			$(SRC_DIR)rr_functions.c \
+			$(SRC_DIR)r_functions.c \
+			$(SRC_DIR)s_functions.c \
+			$(SRC_DIR)turk_sort.c \
+			$(SRC_DIR)turk_sort2.c \
+			$(SRC_DIR)sort_three.c \
+			$(SRC_DIR)errors.c \
+			$(SRC_DIR)stacka.c \
+			$(SRC_DIR)stackb.c \
+			$(SRC_DIR)stack_general.c \
+			$(SRC_DIR)stack_init.c \
+			$(SRC_DIR)lst.c \
+			$(SRC_DIR)lst2.c \
+			$(SRC_DIR)stack_utils.c
+
+BONUSOBJS := ${BONUSSRCS:.c=.o}
 
 start:
 	@make all
@@ -45,12 +65,17 @@ $(NAME): $(OBJS) $(LIB)
 
 clean:
 	@$(RM) -r $(OBJS)
+	@$(RM) -r $(BONUSOBJS)
 	@make clean -C ./lib
 
 fclean: clean
+	@$(RM) checker
 	@$(RM) $(NAME)
 	@$(RM) $(LIB)
 
 re: fclean all
+
+bonus:  $(BONUSOBJS) $(LIB) $(OBJS)
+	@$(CC) $(CFLAGS) $(INC) $(BONUSOBJS) $(LIB) -o checker
 
 .PHONY: start all clean fclean re

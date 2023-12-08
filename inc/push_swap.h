@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:04:07 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/04 13:41:44 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/08 17:31:51 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # include "../lib/ft_printf.h"
 # include <limits.h>
+
+typedef struct s_instruction
+{
+	char			*instructions;
+	void			*next;
+}					t_instruction;
+
 
 typedef struct s_node
 {

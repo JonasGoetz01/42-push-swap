@@ -5,3 +5,4 @@ push_swap
 .vscode/*
 !.vscode/launch.json
 visualizer
+checker

@@ -32,8 +32,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/jgotz/workspace/07_push-swap/src",
-      "program": "/Users/jgotz/workspace/07_push-swap/src/build/Debug/outDebug"
+      "cwd": "/Users/jgotz/workspace/07_push-swap/lib/libft",
+      "program": "/Users/jgotz/workspace/07_push-swap/lib/libft/build/Debug/outDebug"
     }
   ]
 }
