@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:04:07 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/08 17:31:51 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/09 15:30:26 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_instruction
 	void			*next;
 }					t_instruction;
 
-
 typedef struct s_node
 {
 	int				value;
@@ -34,6 +33,8 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
+
+void				free_split(char **split);
 
 int					error_syntax(char *str_n);
 int					error_duplicate(t_node *a, int n);
