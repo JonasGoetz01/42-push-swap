@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:44:36 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/08 21:59:13 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/09 15:23:39 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,44 @@ void	initialize_stack(char *str, t_node **stack)
 	free_split(split);
 }
 
+t_instruction	*new_instruction(char *instructions)
+{
+	t_instruction	*new;
+
+	new = ft_calloc(1, sizeof(t_instruction));
+	if (!new)
+		return (NULL);
+	new->instructions = ft_strdup(instructions);
+	new->next = NULL;
+	return (new);
+}
+
+t_instruction	*last_instruction(t_instruction *instructions)
+{
+	while (instructions->next)
+		instructions = instructions->next;
+	return (instructions);
+}
+
+void	push_instruction(t_instruction **instructions, char *line)
+{
+	t_instruction	*new;
+	t_instruction	*last;
+
+	new = ft_calloc(1, sizeof(t_instruction));
+	if (!new)
+		return ;
+	new->instructions = ft_strdup(line);
+	new->next = NULL;
+	if (!(*instructions))
+		*instructions = new;
+	else
+	{
+		last = last_instruction(*instructions);
+		last->next = new;
+	}
+}
+
 void	free_instructions(t_instruction *instructions)
 {
 	t_instruction	*next;
@@ -68,12 +106,13 @@ void	free_instructions(t_instruction *instructions)
 void	execute_instructions(t_instruction *instr, t_node **stack_a,
 		t_node **stack_b)
 {
+	// array static const
 	while (instr)
 	{
 		if (!ft_strncmp(instr->instructions, "sa", 3)
 			|| !ft_strncmp(instr->instructions, "ss", 3))
 			sa(stack_a, 1);
-		if (!ft_strncmp(instr->instructions, "sb", 3)
+			if (!ft_strncmp(instr->instructions, "sb", 3)
 			|| !ft_strncmp(instr->instructions, "ss", 3))
 			sb(stack_b, 1);
 		if (!ft_strncmp(instr->instructions, "pa", 3))
@@ -99,19 +138,19 @@ void	execute_instructions(t_instruction *instr, t_node **stack_a,
 int	add_instruction(t_instruction **instructions, char *line)
 {
 	t_instruction	*new;
+	t_instruction	*last;
 
-	new = ft_calloc(1, sizeof(t_instruction));
+	new = new_instruction(line);
 	if (!new)
-		return (1);
-	new->instructions = ft_strdup(line);
-	new->next = NULL;
-	while (*instructions && (*instructions)->next)
-		*instructions = (*instructions)->next;
-	if (*instructions)
-		(*instructions)->next = new;
-	else
+		return (-1);
+	if (!(*instructions))
 		*instructions = new;
-	return (0);
+	else
+	{
+		last = last_instruction(*instructions);
+		last->next = new;
+	}
+	return (1);
 }
 
 int	get_instruction(t_instruction **instructions)
@@ -140,8 +179,7 @@ int	get_instruction(t_instruction **instructions)
 		&& ft_strncmp(line, "rra", 3) && ft_strncmp(line, "rrb", 3)
 		&& ft_strncmp(line, "rrr", 3))
 		return (-1);
-	if (add_instruction(instructions, line))
-		return (-1);
+	push_instruction(instructions, line);
 	return (1);
 }
 
@@ -161,9 +199,47 @@ int	init_instructions(t_instruction **instructions)
 	return (1);
 }
 
+int	is_sorted(t_node *stack_a, t_node *stack_b)
+{
+	int		num;
+	t_node	*tmp;
+
+	if (stack_b)
+		return (0);
+	if (!stack_a)
+		return (0);
+	num = stack_a->value;
+	tmp = stack_a->next;
+	while (tmp)
+	{
+		if (num > tmp->value)
+			return (0);
+		num = tmp->value;
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+void	print_stack(t_node *stack_a, t_node *stack_b)
+{
+	ft_printf("stack_a:\n");
+	while (stack_a)
+	{
+		ft_printf("%d\n", stack_a->value);
+		stack_a = stack_a->next;
+	}
+	ft_printf("stack_b:\n");
+	while (stack_b)
+	{
+		ft_printf("%d\n", stack_b->value);
+		stack_b = stack_b->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_node			*stack_a;
+	t_node			*stack_b;
 	t_instruction	**instructions;
 
 	if (argc != 2)
@@ -172,14 +248,15 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	stack_a = NULL;
+	stack_b = NULL;
 	instructions = malloc(sizeof(t_instruction *));
 	init_stack_a(&stack_a, ft_split(argv[1], ' '));
 	init_instructions(instructions);
-	while (*instructions)
-	{
-		ft_printf("%s\n", (*instructions)->instructions);
-		*instructions = (*instructions)->next;
-	}
+	execute_instructions(*instructions, &stack_a, &stack_b);
+	if (is_sorted(stack_a, stack_b))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 	free_stack(&stack_a);
 	return (0);
 }
