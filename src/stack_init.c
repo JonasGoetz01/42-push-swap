@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:41:22 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/08 19:21:24 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/09 15:36:32 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,27 @@ void	init_stack_a(t_node **a, char **argv)
 {
 	long	n;
 	int		i;
+	int		j;
+	char	**split_numbers;
 
 	i = 0;
 	while (argv[i])
 	{
-		if (error_syntax(argv[i]))
-			free_errors(a);
-		n = ft_atol(argv[i]);
-		if (n > INT_MAX || n < INT_MIN)
-			free_errors(a);
-		if (error_duplicate(*a, (int)n))
-			free_errors(a);
-		append_node(a, (int)n);
+		split_numbers = ft_split(argv[i], ' ');
+		j = 0;
+		while (split_numbers[j])
+		{
+			if (error_syntax(split_numbers[j]))
+				free_errors(a);
+			n = ft_atol(split_numbers[j]);
+			if (n > INT_MAX || n < INT_MIN)
+				free_errors(a);
+			if (error_duplicate(*a, (int)n))
+				free_errors(a);
+			append_node(a, (int)n);
+			j++;
+		}
+		free_split(split_numbers);
 		i++;
 	}
 }
