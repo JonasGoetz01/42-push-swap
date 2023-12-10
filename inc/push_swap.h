@@ -6,7 +6,7 @@
 /*   By: jgotz <jgotz@student.42heilbronn.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:04:07 by jgotz             #+#    #+#             */
-/*   Updated: 2023/12/09 15:30:26 by jgotz            ###   ########.fr       */
+/*   Updated: 2023/12/09 18:01:04 by jgotz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@ typedef struct s_node
 }					t_node;
 
 void				free_split(char **split);
+int					get_instruction(t_instruction **instructions);
+int					init_instructions(t_instruction **instructions);
+int					is_sorted(t_node *stack_a, t_node *stack_b);
+void				print_stack(t_node *stack_a, t_node *stack_b);
+t_instruction		*last_instruction(t_instruction *instructions);
+int					push_instruction(t_instruction **instructions, char *line);
+void				free_instructions(t_instruction *instructions);
+void				execute_instructions(t_instruction *instr, t_node **stack_a,
+						t_node **stack_b);
+int					add_instruction(t_instruction **instructions, char *line);
+t_instruction		*new_instruction(char *instructions);
+void				initialize_stack(char *str, t_node **stack);
 
 int					error_syntax(char *str_n);
 int					error_duplicate(t_node *a, int n);

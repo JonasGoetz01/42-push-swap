@@ -30,6 +30,8 @@ SRCS = $(SRC_DIR)p_functions.c \
 OBJS := ${SRCS:.c=.o}
 
 BONUSSRCS = $(SRC_DIR)bonus.c \
+			$(SRC_DIR)bonus2.c \
+			$(SRC_DIR)bonus3.c \
 			$(SRC_DIR)p_functions.c \
 			$(SRC_DIR)rr_functions.c \
 			$(SRC_DIR)r_functions.c \
